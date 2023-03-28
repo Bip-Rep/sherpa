@@ -359,6 +359,9 @@ class Lib {
     gptParams.ref.instruct = true; // instruction mode (used for Alpaca models)
     gptParams.ref.ignore_eos = false; // do not stop generating after eos
     gptParams.ref.perplexity = false;
+    gptParams.ref.use_mlock = false; // use mlock to keep model in memory
+    gptParams.ref.mem_test = false; // compute maximum memory usage
+    gptParams.ref.verbose_prompt = false;
     var params = gptParams.ref;
     log("main found : ${llama.providesSymbol('llama_context_default_params')}");
 

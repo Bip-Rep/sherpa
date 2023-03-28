@@ -18,20 +18,6 @@ class NativeLibrary {
           lookup)
       : _lookup = lookup;
 
-  int add(
-    int a,
-    int b,
-  ) {
-    return _add(
-      a,
-      b,
-    );
-  }
-
-  late final _addPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>('add');
-  late final _add = _addPtr.asFunction<int Function(int, int)>();
-
   llama_context_params llama_context_default_params() {
     return _llama_context_default_params();
   }
@@ -119,20 +105,6 @@ class NativeLibrary {
       int Function(ffi.Pointer<llama_context>, ffi.Pointer<llama_token>, int,
           int, int)>();
 
-  bool freePointer(
-    ffi.Pointer<ffi.Void> ptr,
-  ) {
-    return _freePointer(
-      ptr,
-    );
-  }
-
-  late final _freePointerPtr =
-      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
-          'freePointer');
-  late final _freePointer =
-      _freePointerPtr.asFunction<bool Function(ffi.Pointer<ffi.Void>)>();
-
   int llama_tokenize(
     ffi.Pointer<llama_context> ctx,
     ffi.Pointer<ffi.Char> text,
@@ -185,6 +157,20 @@ class NativeLibrary {
   late final _llama_n_ctx =
       _llama_n_ctxPtr.asFunction<int Function(ffi.Pointer<llama_context>)>();
 
+  int llama_n_embd(
+    ffi.Pointer<llama_context> ctx,
+  ) {
+    return _llama_n_embd(
+      ctx,
+    );
+  }
+
+  late final _llama_n_embdPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<llama_context>)>>(
+          'llama_n_embd');
+  late final _llama_n_embd =
+      _llama_n_embdPtr.asFunction<int Function(ffi.Pointer<llama_context>)>();
+
   ffi.Pointer<ffi.Float> llama_get_logits(
     ffi.Pointer<llama_context> ctx,
   ) {
@@ -198,6 +184,21 @@ class NativeLibrary {
           ffi.Pointer<ffi.Float> Function(
               ffi.Pointer<llama_context>)>>('llama_get_logits');
   late final _llama_get_logits = _llama_get_logitsPtr.asFunction<
+      ffi.Pointer<ffi.Float> Function(ffi.Pointer<llama_context>)>();
+
+  ffi.Pointer<ffi.Float> llama_get_embeddings(
+    ffi.Pointer<llama_context> ctx,
+  ) {
+    return _llama_get_embeddings(
+      ctx,
+    );
+  }
+
+  late final _llama_get_embeddingsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Float> Function(
+              ffi.Pointer<llama_context>)>>('llama_get_embeddings');
+  late final _llama_get_embeddings = _llama_get_embeddingsPtr.asFunction<
       ffi.Pointer<ffi.Float> Function(ffi.Pointer<llama_context>)>();
 
   ffi.Pointer<ffi.Char> llama_token_to_str(
@@ -421,6 +422,12 @@ class gpt_params extends ffi.Struct {
   external int n_ctx;
 
   @ffi.Int32()
+  external int n_batch;
+
+  @ffi.Int32()
+  external int n_keep;
+
+  @ffi.Int32()
   external int top_k;
 
   @ffi.Float()
@@ -431,9 +438,6 @@ class gpt_params extends ffi.Struct {
 
   @ffi.Float()
   external double repeat_penalty;
-
-  @ffi.Int32()
-  external int n_batch;
 
   @ffi.Int()
   external int std;
@@ -451,6 +455,9 @@ class gpt_params extends ffi.Struct {
   external bool interactive;
 
   @ffi.Bool()
+  external bool embedding;
+
+  @ffi.Bool()
   external bool interactive_start;
 
   @ffi.Bool()
@@ -461,6 +468,15 @@ class gpt_params extends ffi.Struct {
 
   @ffi.Bool()
   external bool perplexity;
+
+  @ffi.Bool()
+  external bool use_mlock;
+
+  @ffi.Bool()
+  external bool mem_test;
+
+  @ffi.Bool()
+  external bool verbose_prompt;
 }
 
 class llama_context extends ffi.Opaque {}
@@ -496,7 +512,20 @@ class llama_context_params extends ffi.Struct {
 
   @ffi.Bool()
   external bool vocab_only;
+
+  @ffi.Bool()
+  external bool use_mlock;
+
+  @ffi.Bool()
+  external bool embedding;
+
+  external llama_progress_callback progress_callback;
+
+  external ffi.Pointer<ffi.Void> progress_callback_user_data;
 }
+
+typedef llama_progress_callback = ffi.Pointer<
+    ffi.NativeFunction<ffi.Void Function(ffi.Double, ffi.Pointer<ffi.Void>)>>;
 
 const int __DARWIN_ONLY_64_BIT_INO_T = 1;
 
