@@ -36,7 +36,7 @@ PODS:
     - DKImagePickerController/PhotoGallery
     - Flutter
   - Flutter (1.0.0)
-  - llama (0.0.1):
+  - llamaforios (0.0.1):
     - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
@@ -61,7 +61,7 @@ DEPENDENCIES:
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
   - Flutter (from `Flutter`)
-  - llama (from `.symlinks/plugins/llama/ios`)
+  - llamaforios (from `.symlinks/plugins/llamaforios/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - resource_monitor (from `.symlinks/plugins/resource_monitor/ios`)
@@ -83,8 +83,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/file_picker/ios"
   Flutter:
     :path: Flutter
-  llama:
-    :path: ".symlinks/plugins/llama/ios"
+  llamaforios:
+    :path: ".symlinks/plugins/llamaforios/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/ios"
   permission_handler_apple:
@@ -104,7 +104,7 @@ SPEC CHECKSUMS:
   DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
   file_picker: ce3938a0df3cc1ef404671531facef740d03f920
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  llama: ff19ffc5ce658fd96a39d68b04b5583334ceeee4
+  llamaforios: f6202add8b598d0bd696c589fd573099efc5a7c7
   path_provider_foundation: c68054786f1b4f3343858c1e1d0caaded73f0be9
   permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
   resource_monitor: 93329986d527463a08fe837493409f94ad364611
