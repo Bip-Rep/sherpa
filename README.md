@@ -1,5 +1,6 @@
 # Demo App for llama.cpp Model
-This app is a demo of the llama.cpp model that tries to recreate an offline chatbot, working similar to OpenAI's ChatGPT. The source code for this app is available on GitHub.
+This app is a demo of the llama.cpp model that tries to recreate an offline chatbot, working similar to OpenAI's ChatGPT. <br>
+The source code for this app is available on GitHub.
 
 # Now it works with Vicuna !!!
 You can use the latest models on the app.
@@ -16,8 +17,8 @@ To run this app, you need to download the 7B llama model from Meta for research 
 Additionally, you can fine-tune the ouput with preprompts to improve its performance.
 
 ## Working demo
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/jdw7oABjTeQ/0.jpg)](https://www.youtube.com/watch?v=jdw7oABjTeQ)
-Click on the image to view the video on YouTube.
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/jdw7oABjTeQ/0.jpg)](https://www.youtube.com/watch?v=jdw7oABjTeQ)<br>
+Click on the image to view the video on YouTube.<br>
 It shows a OnePlus 7 with 8Gb running Sherpa without speed up.
 
 ## Usage
