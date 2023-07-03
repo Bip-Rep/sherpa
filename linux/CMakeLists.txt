@@ -136,3 +136,8 @@ if(NOT CMAKE_BUILD_TYPE MATCHES "Debug")
   install(FILES "${AOT_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
     COMPONENT Runtime)
 endif()
+
+set(BUILD_SHARED_LIBS ON)
+add_subdirectory(./llama.cpp)
+add_subdirectory(./llamasherpa)
+install(FILES ${PROJECT_BINARY_DIR}/llamasherpa/libllamasherpa.so DESTINATION "${INSTALL_BUNDLE_LIB_DIR}" COMPONENT Runtime)
